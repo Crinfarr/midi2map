@@ -17,7 +17,7 @@ type AppResult = Result<(), AppErr>;
 
 fn main() -> AppResult {
     let fp_str = std::env::args()
-        .nth(0)
+        .nth(1)
         .ok_or(AppErr::ArgumentErr("No file path".to_owned()))?;
     let mut istream = std::fs::File::open(fp_str)
         .map_err(|e| AppErr::FileSystemError(format!("Error opening input: {e}")))?;
